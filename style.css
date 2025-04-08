@@ -28,8 +28,8 @@
     --quote-width:80%;
     --quote-topDist:10%;
     --selected-Width:80%;
-    --selected-TopDist:25%;
-    --input-TopDist:25%;
+    --selected-TopDist:20%;
+    --input-TopDist:15%;
     --num-padding:2vh 8vw;
     --num-width:33%;
     --num-height:20%;
@@ -170,6 +170,7 @@ body{
 }
 .theme-button{
     position:relative;
+    top:5%;
     left:88%;
     background-color: var(--themeButton-bg);
     border:1px solid var(--themeButton-border);
@@ -185,7 +186,7 @@ body{
 .themeBtntext{
     position:relative;
     left:-5%;
-    font-size: var(--selected-fontSize -1.3);
+    font-size: var(--selected-fontSize -1.6rem);
     color:var(--themeButton-border);
 }
 .qouteTransition{
