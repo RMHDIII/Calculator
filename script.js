@@ -2,20 +2,37 @@ let themeBtn = document.querySelector('.theme-button');
 let body = document.body;
 let text = document.getElementById('target');
 let running = false;
+let theme = 0;
 
 themeBtn.addEventListener('click', () => {
     if (running) return;
     running = true;
+
+    if (theme === 0) {
+        themeBtn.classList.remove('themeBtnReverse-transition');
+        void themeBtn.offsetWidth;
+        themeBtn.classList.add('themeBtn-transition');
+        theme = 1;
+    } else {
+        themeBtn.classList.remove('themeBtn-transition');
+        void themeBtn.offsetWidth;
+        themeBtn.classList.add('themeBtnReverse-transition');
+        theme = 0;
+    }
+
     text.classList.remove('qouteTransition');
+    void text.offsetWidth;
+    text.classList.add('qouteTransition');
+
     setTimeout(() => {
+        themeBtn.classList.toggle('dark');
         body.classList.toggle('dark');
     }, 200);
-    text.classList.add('qouteTransition');
+
     setTimeout(() => {
-        text.classList.remove('qouteTransition');
         running = false;
     }, 600);
-});
+}); 
 
 const input = document.querySelector('.input-text');
 const selected = document.querySelector('.selected');
