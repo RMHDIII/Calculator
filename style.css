@@ -12,7 +12,7 @@
     --input-Shadow:#07205b;
     --input-boxShadow:#6ab1bf;
     --themeButton-border:#6cb99f;
-    --key-bg:#1f3d62;
+    --key-bg:#1067d1;
     --quote-fontsize:3.8rem;
     --selected-fontSize:1.2rem;
     --math-fontsize:2rem;
@@ -47,6 +47,7 @@ body.dark{
     --input-textColor:#c9a5c2;
     --input-boxShadow:#221746;
     --themeButton-border:#e399d3;
+    --key-bg:#25184e;
     --quote-fontsize:3.8rem;
     --selected-fontSize:1.2rem;
     --math-fontsize:1.6rem;
