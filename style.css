@@ -238,6 +238,7 @@ body{
     font-family: 'Courier New', Courier, monospace;
     font-size: 2rem;
     color: var(--quote-textColor);
+    -webkit-tap-highlight-color: transparent;
     cursor: pointer;
     transition: all 0.2s ease;
 }
