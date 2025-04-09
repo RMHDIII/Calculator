@@ -18,7 +18,7 @@
     /* Font Variables */
     --themeBtn-fontSize: 0.6rem;
     --quote-fontsize: 3.8rem;
-    --selected-fontSize: 1.4rem;
+    --selected-fontSize: 1.2rem;
     --math-fontsize: 2rem;
   
     /* Layout Variables */
@@ -31,10 +31,10 @@
     --themeBtn-height: 6.9vw;
     --quote-width: 80%;
     --quote-height: 30%;
-    --quote-topDist: 10%;
+    --quote-topDist: 5%;
     --selected-Width: 80%;
-    --selected-TopDist: 15%;
-    --input-TopDist: 10%;
+    --selected-TopDist: 2%;
+    --input-TopDist: -5%;
     --num-padding: 2vh 8vw;
     --num-width: 33%;
     --num-height: 20%;
