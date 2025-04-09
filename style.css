@@ -18,7 +18,7 @@
     /* Font Variables */
     --themeBtn-fontSize: 0.6rem;
     --quote-fontsize: 3.8rem;
-    --selected-fontSize: 1.2rem;
+    --selected-fontSize: 1.6rem;
     --math-fontsize: 2rem;
   
     /* Layout Variables */
@@ -33,8 +33,8 @@
     --quote-height: 30%;
     --quote-topDist: 5%;
     --selected-Width: 80%;
-    --selected-TopDist: 2%;
-    --input-TopDist: 0%;
+    --selected-TopDist: 40%;
+    --input-TopDist: 30%;
     --num-padding: 2vh 8vw;
     --num-width: 33%;
     --num-height: 20%;
@@ -154,8 +154,9 @@
   
   /* Selected/Display Section */
   .selected {
-    position: relative;
+    position: absolute;
     top: var(--selected-TopDist);
+    left:5%;
     background: var(--selected-bg);
     box-shadow: 2px 2px 32px var(--selected-Shadow);
     width: calc(90% - 2 * var(--container-padding));
@@ -166,14 +167,14 @@
     text-align: center;
     word-wrap: break-word;
     min-height: 20px;
-    margin: 0 auto 20px;
     padding: 15px;
   }
   
   /* Input Section */
   .input {
-    position: relative;
-    top: var(--input-TopDist);
+    position: absolute;
+    left:1%;
+    bottom:2%;
     background-color: var(--input-bgc);
     padding: 7vw;
     border-top-left-radius: 20%;
@@ -194,6 +195,7 @@
     color: var(--input-textColor);
     font-family: 'Courier Prime', Courier, monospace;
     font-size: var(--math-fontsize);
+    margin: 0;
   }
   
   /* Keypad Styles */
@@ -297,9 +299,9 @@
   @media (min-width: 768px) {
     :root {
       --themeBtn-height: 2.9vw;
-      --input-TopDist: -7%;
       --selected-TopDist: 0%;
       --quote-topDist: -5%;
+      --selected-TopDist: 40%;
     }
     .numkey:hover {
       transform: translateY(-3px);
