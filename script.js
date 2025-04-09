@@ -41,12 +41,38 @@ const buttons = document.querySelectorAll('.numkey');
 let firstNumber = null;
 let currentOperator = null;
 let resetInput = false;
+let lastClearTime = 0;
+let clearTimeout = null;
+
+let clearTimeoutId = null;
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
         const value = button.textContent;
 
-        if (value === '=') {
+        if (value === 'C') {
+            // Clear the timer if it exists
+            if (clearTimeoutId) {
+                clearTimeout(clearTimeoutId);
+                clearTimeoutId = null;
+            }
+            const now = Date.now();
+            
+            // If it's been less than 500ms since the last C press, clear everything
+            if (now - lastClearTime < 200) {
+                input.value = '';
+                selected.textContent = '';
+                firstNumber = null;
+                currentOperator = null;
+            } else {
+                // Otherwise just remove the last character
+                if (input.value.length > 0) {
+                    input.value = input.value.slice(0, -1);
+                }
+            }
+            lastClearTime = now;
+        }
+        else if (value === '=') {
             if (firstNumber !== null && currentOperator !== null && input.value) {
                 const secondNumber = parseFloat(input.value);
                 let result;
@@ -85,7 +111,45 @@ buttons.forEach(button => {
         }
     });
 });
-
-input.addEventListener('click', () => {
-    input.value = '';
+// Keyboard support
+document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey || e.altKey || e.metaKey) return;
+    let key = e.key;
+    
+    // Handle numbers
+    if (/^[0-9]$/.test(key)) {
+        pressButton(key);
+    }
+    // Handle operators
+    else if (key === '+' || key === '-') {
+        pressButton(key);
+    }
+    else if (key === '*') {
+        pressButton('×');
+    }
+    else if (key === '/') {
+        pressButton('÷');
+    }
+    else if (key === '=' || key === 'Enter') {
+        pressButton('=');
+    }
+    else if (key === '.') {
+        pressButton('.');
+    }
+    else if (key === 'Backspace' || key === 'Delete') {
+        pressButton('C');
+    }
+    else if (key === 'Escape') {
+        pressButton('C');
+        setTimeout(() => pressButton('C'), 50);
+    }
 });
+
+function pressButton(value) {
+    const btn = Array.from(buttons).find(b => b.textContent === value);
+    if (btn) {
+        btn.classList.add('pressed');
+        setTimeout(() => btn.classList.remove('pressed'), 100);
+        btn.click();
+    }
+}
