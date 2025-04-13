@@ -2,23 +2,29 @@ let themeBtn = document.querySelector('.theme-button');
 let body = document.body;
 let text = document.getElementById('target');
 let running = false;
-let theme = 0;
+let theme = localStorage.getItem('theme') || '0';
+if (theme === '1') {
+    themeBtn.classList.add('dark');
+    body.classList.add('dark');
+}
 
 themeBtn.addEventListener('click', () => {
     if (running) return;
     running = true;
 
-    if (theme === 0) {
+    if (theme === '0') {
         themeBtn.classList.remove('themeBtnReverse-transition');
         void themeBtn.offsetWidth;
         themeBtn.classList.add('themeBtn-transition');
-        theme = 1;
+        theme = '1';
     } else {
         themeBtn.classList.remove('themeBtn-transition');
         void themeBtn.offsetWidth;
         themeBtn.classList.add('themeBtnReverse-transition');
-        theme = 0;
+        theme = '0';
     }
+
+    localStorage.setItem('theme', theme);
 
     text.classList.remove('qouteTransition');
     void text.offsetWidth;
@@ -32,7 +38,7 @@ themeBtn.addEventListener('click', () => {
     setTimeout(() => {
         running = false;
     }, 600);
-}); 
+});
 
 const input = document.querySelector('.input-text');
 const selected = document.querySelector('.selected');
@@ -51,21 +57,18 @@ buttons.forEach(button => {
         const value = button.textContent;
 
         if (value === 'C') {
-            // Clear the timer if it exists
             if (clearTimeoutId) {
                 clearTimeout(clearTimeoutId);
                 clearTimeoutId = null;
             }
             const now = Date.now();
             
-            // If it's been less than 500ms since the last C press, clear everything
             if (now - lastClearTime < 200) {
                 input.value = '';
                 selected.textContent = '';
                 firstNumber = null;
                 currentOperator = null;
             } else {
-                // Otherwise just remove the last character
                 if (input.value.length > 0) {
                     input.value = input.value.slice(0, -1);
                 }
