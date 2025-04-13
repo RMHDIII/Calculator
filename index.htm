@@ -3,7 +3,12 @@
     <head>
         <link rel="stylesheet" href="./style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <title>calc 1.8</title>
+        <title>calculator</title>
+        <script>
+            if (localStorage.getItem('theme') === '1') {
+                document.documentElement.classList.add('dark');
+            }
+        </script>
     </head>
     <body>
             <section class="topContainer">
