@@ -1,5 +1,6 @@
 let themeBtn = document.querySelector('.theme-button');
 let body = document.body;
+let githubIMG = document.querySelector('.credits');
 let text = document.getElementById('target');
 let running = false;
 let theme = localStorage.getItem('theme') || '0';
@@ -33,6 +34,7 @@ themeBtn.addEventListener('click', () => {
     setTimeout(() => {
         themeBtn.classList.toggle('dark');
         body.classList.toggle('dark');
+        githubIMG.classList.toggle('dark');
     }, 200);
 
     setTimeout(() => {
