@@ -7,6 +7,7 @@ let theme = localStorage.getItem('theme') || '0';
 if (theme === '1') {
     themeBtn.classList.add('dark');
     body.classList.add('dark');
+    githubIMG.classList.toggle('dark');
 }
 
 themeBtn.addEventListener('click', () => {
