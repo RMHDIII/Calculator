@@ -18,7 +18,7 @@
     /* Font Variables */
     --themeBtn-fontSize: 0.6rem;
     --quote-fontsize: 3.8rem;
-    --selected-fontSize: 1.6rem;
+    --selected-fontSize: 1.2rem;
     --math-fontsize: 2rem;
   
     /* Layout Variables */
@@ -31,10 +31,10 @@
     --themeBtn-height: 6.9vw;
     --quote-width: 80%;
     --quote-height: 30%;
-    --quote-topDist: 5%;
+    --quote-topDist: 6%;
     --selected-Width: 80%;
-    --selected-TopDist: 40%;
-    --input-TopDist: 30%;
+    --selected-TopDist: 20%;
+    --input-TopDist: 20%;
     --num-padding: 2vh 8vw;
     --num-width: 33%;
     --num-height: 20%;
@@ -48,7 +48,7 @@
     --quote-textColor: #e399d3;
     --text-shadow: #fb5cf9;
     --selected-bg: #261235;
-    --selected-Shadow: #4b174b;
+    --selected-Shadow: #1f151f;
     --selected-ShadowHover: #bc70ac;
     --input-bgc: #221746;
     --input-textColor: #c9a5c2;
@@ -154,11 +154,11 @@
   
   /* Selected/Display Section */
   .selected {
-    position: absolute;
+    position: relative;
     top: var(--selected-TopDist);
-    left:5%;
     background: var(--selected-bg);
     box-shadow: 2px 2px 32px var(--selected-Shadow);
+    padding: 3vw;
     width: calc(90% - 2 * var(--container-padding));
     border-radius: 5%;
     transition: all 0.2s ease;
@@ -167,21 +167,21 @@
     text-align: center;
     word-wrap: break-word;
     min-height: 20px;
-    padding: 15px;
+    margin: 0 auto 20px;
+    padding: 14px;
   }
   
   /* Input Section */
   .input {
-    position: absolute;
-    left:1%;
-    bottom:2%;
+    position: relative;
+    top: var(--input-TopDist);
     background-color: var(--input-bgc);
     padding: 7vw;
     border-top-left-radius: 20%;
     border-top-right-radius: 20%;
     width: calc(100% - 2 * var(--container-padding));
     margin: 0 auto;
-    padding: 10px;
+    padding: 14px;
   }
   
   .input-text {
@@ -195,7 +195,6 @@
     color: var(--input-textColor);
     font-family: 'Courier Prime', Courier, monospace;
     font-size: var(--math-fontsize);
-    margin: 0;
   }
   
   /* Keypad Styles */
@@ -203,7 +202,7 @@
     display: flex;
     justify-content: space-around;
     width: 100%;
-    height: 20%;
+    height: 23%;
     padding: 2px 0;
   }
   
@@ -211,8 +210,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 95%;
-    width: 25%;
+    height: 90%;
+    width: 22%;
     margin: 0 1%;
     background-color: var(--key-bg);
     border: 1px solid var(--themeButton-border);
@@ -241,29 +240,25 @@
   .eq {
     background-color: var(--selected-bg);
     color: var(--quote-textColor);
-    height: 20%;
+    height: 25%;
     width: 98%;
   }
   
   /* Credits */
   .credits {
     position: fixed;
-    left: 10%;
+    left: 15px;
     color: var(--input-textColor);
+    background: url();
     font-size: 0.3rem;
-    opacity: 0.2;
+    opacity: 0.6;
     transition: all 0.3s ease;
-    padding: 4px 8px;
+    padding: 14px 14px;
+    background: url(./github.png)center/cover;
   }
-  
-  .credits:hover {
-    opacity: 1;
-    background-color: var(--selected-Shadow);
-    text-shadow: 0 0 5px var(--text-shadow);
-    transform:translateY(20%) scale(1.5);
-    font-size: 1.2rem;
+  .credits.dark{
+    background: url(./githubDark.png)center/cover;
   }
-  
   /* Animations */
   .themeBtn-transition {
     animation: themeBtnTransition 0.6s forwards;
@@ -296,28 +291,34 @@
   }
   
   /* Responsive Styles */
-  @media (min-width: 768px) {
+  @media (min-width: 500px) {
     :root {
       --themeBtn-height: 2.9vw;
       --selected-TopDist: 0%;
-      --quote-topDist: -5%;
-      --selected-TopDist: 40%;
+      --input-TopDist: -5%;
     }
-    .numkey:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    
+    .topContainer, .bottomContainer {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      
     }
+    
     .selected:hover {
-      box-shadow: 0 3px 6px var(--selected-ShadowHover);
-      transform: translateY(-20%);
+      box-shadow: 0 0 22px var(--selected-ShadowHover);
+      transform: translateY(-30%);
     }
     
     .numkey {
       font-size: 2rem;
     }
-    .numkey.active {
-      transform: scale(0.90);
-      background-color: var(--themeButton-border);
-    }
+  }
   
+  @media (min-width: 768px) {
+    :root {
+      --quote-topDist:-15%;
+    }
+    .numkey:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
   }
